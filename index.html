@@ -1,0 +1,221 @@
+<!doctype html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>3D Tank Game with Enhanced Graphics and Obstacles</title><style>html {
+            height:100%;
+            width: 100%;
+            overflow: hidden;
+        }
+        body { 
+            padding: 0%; 
+            margin: 0; 
+            height:100%;
+            width: 100%;
+            overflow: hidden;
+        }
+        canvas { display: block; }
+
+        #fullscreenButton {
+            background-color: rgba(255, 255, 255, 0.4);
+            border: none;
+            border-radius: 5px;
+            color: #333;
+            cursor: pointer;
+            padding: 5px;
+            transition: background-color 0.3s;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #fullscreenButton:hover {
+            background-color: rgba(255, 255, 255, 0.9);
+        }
+
+        #fullscreenButton svg {
+            width: 24px;
+            height: 24px;
+        }
+
+        .front {
+            visibility: hidden !important;
+        }
+
+        .back {
+            visibility: hidden !important;
+        }
+
+        #scoreboard {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            right: 10px;
+            display: flex;
+            justify-content: space-around;
+            padding: 0px 10px;
+        }
+
+        #respawn-btn {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+        }
+
+        .respawn-item {
+            font-weight: bold;
+            text-align: center;
+            justify-content: center;
+            user-select: none;
+            display: flex;
+            align-items: center;
+            min-height: 40px;
+            padding: 10px 30px;
+            border-radius: 30px;
+            letter-spacing: .2cm;
+            color: white;
+            font-family: Arial, sans-serif;
+            font-size: 24px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+            background-color: rgba(0, 0, 0, 0.4);
+            min-width: 120px;
+            border: 4px solid black;
+        }
+
+        .score-item {
+            display: flex;
+            align-items: center;
+            min-height: 30px;
+            padding: 5px 10px;
+            border-radius: 20px;
+            color: white;
+            font-family: Arial, sans-serif;
+            font-size: 14px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+            background-color: rgba(0, 0, 0, 0.4);
+            min-width: 120px;
+            border: 4px solid black;
+        }
+
+        #debug {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            z-index: 100;
+            width: 220px;
+            height: 120px;
+            padding: 5px;
+            color: red;
+            font-size: 13px;
+            pointer-events: none;
+        }
+
+        .joystick-asset {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            transition: opacity 0.3s;
+            opacity: 0.5;
+            pointer-events: none;
+        }
+
+        .joystick-asset > svg path {
+            transition: fill 0.3s;
+        }
+
+        .joystick-asset.active > svg path {
+            fill: #3399ff;
+            transition: fill 0.3s;
+        }
+
+        .joystick-direct-segment {
+            opacity: 1;
+        }
+        .control-zone {
+            overflow: hidden;
+        }
+
+        .mode-button {
+            width: 80px;
+            height: 80px;
+            border: 3px solid #3399ff;
+            line-height: 80px;
+            text-align: center;
+            color: #3399ff;
+            font-family: 'Courier New', Courier, monospace;
+            font-weight: bold;
+            font-size: 30px;
+            border-radius: 100%;
+            user-select: none;
+            cursor: pointer;
+            opacity: 0.5;
+        }
+
+        .mode-button.indirect-fire {
+            border-color:#f73e2a;
+            color: #f73e2a;
+        }
+
+        .mode-button.direct-fire {
+            border-color:#3399ff;
+            color: #3399ff;
+        }
+
+        @media screen and (max-width: 600px) {
+            #scoreboard {
+                flex-direction: column;
+                align-items: center;
+            }
+            .score-item {
+                border: none;
+                margin-top: 5px;
+                min-width: 100%;
+            }
+        }
+        
+        @media screen and (orientation:landscape) {
+            .mode-button {
+                position: absolute;
+                bottom: 25vw;
+                right: 20px;
+                margin-bottom: 10px;
+            }
+
+            .control-zone {
+                position: absolute;
+                width: 25vw;
+                height: 25vw;
+            }
+
+            .fire-control-zone, .angle-control-zone {
+                bottom: 10px;
+                right: 20px;
+            }
+
+            .movement-control-zone, .aim-control-zone {
+                bottom: 10px;
+                left: 20px;
+            }
+        }
+
+        @media screen and (orientation:portrait) {
+            .mode-button {
+                position: absolute;
+                bottom: 25%;
+                right: 10px;
+                margin-bottom: 20px;
+            }
+
+            .control-zone {
+                position: absolute;
+                width: 50%;
+                height: 25%;
+            }
+            .fire-control-zone, .angle-control-zone {
+                bottom: 20px;
+                right: 0px;
+            }
+
+            .movement-control-zone, .aim-control-zone {
+                bottom: 20px;
+                left: 0px;
+            }
+        }</style><script defer="defer" src="main.bundle.js"></script></head><body><canvas id="gameCanvas"></canvas><button id="fullscreenButton" style="position: fixed; top: 10px; right: 10px; z-index: 1000;"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path></svg></button><div id="debug"></div><div id="movement-control-zone" class="control-zone movement-control-zone"></div><div id="fire-control-zone" class="control-zone fire-control-zone"></div><div id="aim-control-zone" class="control-zone aim-control-zone"></div><div id="angle-control-zone" class="control-zone angle-control-zone"></div></body></html>
