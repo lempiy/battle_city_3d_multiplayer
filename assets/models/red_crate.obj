@@ -1,0 +1,100 @@
+#File written by RizomUV 2022.0.11.g5424fda. Compilation :Nov 24 2021,04:16:21
+mtllib Box:mtl
+#begin vertices
+v 1 -0.5 0.5
+v 1 -0.5 -0.5
+v 1 0.5 0.5
+v 1 0.5 -0.5
+v -1 0.5 0.5
+v -1 0.5 -0.5
+v -1 -0.5 0.5
+v -1 -0.5 -0.5
+#end vertices
+
+#begin 14 textures vertices 
+vt 0.5 0.2519531 0
+vt 0.2519531 0.2519531 0
+vt 0.7480469 0.2519531 0
+vt 0.9960937 0.2519531 0
+vt 0.7480469 0.7480469 0
+vt 0.7480469 0.9960938 0
+vt 0.5 0.7480469 0
+vt 0.5 0.9960938 0
+vt 0.00390625 0.2519531 0
+vt 0.5 0.00390625 0
+vt 0.9960937 0.7480469 0
+vt 0.00390625 0.7480469 0
+vt 0.2519531 0.7480469 0
+vt 0.7480469 0.00390625 0
+#end 14 textures vertices 
+
+#begin 24 normals 
+vn 1 0 0
+vn 1 0 0
+vn 1 0 0
+vn 1 0 0
+vn -1 0 -0
+vn -1 0 -0
+vn -1 0 -0
+vn -1 0 -0
+vn 0 0 -1
+vn 0 0 -1
+vn 0 0 -1
+vn 0 0 -1
+vn -0 0 1
+vn -0 0 1
+vn -0 0 1
+vn -0 0 1
+vn 0 -1 0
+vn 0 -1 0
+vn 0 -1 0
+vn 0 -1 0
+vn 0 1 0
+vn 0 1 0
+vn 0 1 0
+vn 0 1 0
+#end 24 normals 
+
+#begin 6 faces
+usemtl initialShadingGroup
+g Box
+s off
+f 1/1/1 2/10/2 4/14/3 3/3/4 
+f 5/5/5 6/6/6 8/8/7 7/7/8 
+f 8/13/9 6/12/10 4/9/11 2/2/12 
+f 3/3/13 5/5/14 7/7/15 1/1/16 
+f 7/7/17 8/13/18 2/2/19 1/1/20 
+f 4/4/21 6/11/22 5/5/23 3/3/24 
+#end 6 faces
+
+#ZOMPROPERTIES_04{
+#ZOMPROPERTIES_04 table {Mesh table {SymPlane table {Point vector3d 0 0 0 Normal vector3d 1 0 0 Threshold double 0.01 
+#ZOMPROPERTIES_04 Enabled bool false EdgeID int -1 SymEdgeID int -1 UPos double 0.5 LocalMode bool false } RootGroup C
+#ZOMPROPERTIES_04 SubMeshGroup {Children table {Tile_0_0 CSubMeshGroup {Children table {} BBoxUV box3d 0 0 0 0 0 0 BBo
+#ZOMPROPERTIES_04 x3D box3d 0 0 0 0 0 0 Area3D double 0 AreaUV double 0.615273 IsRoot bool false TopoStable table {Sel
+#ZOMPROPERTIES_04 ected bool false Box box3d 0 1 0 1 0 1 U int 0 V int 0 NU int 0 NV int 0 Tiling vector3d 1 1 1 TileR
+#ZOMPROPERTIES_04 atioMode string "1:1" Pack table {BoxFrameLocked bool false BoxFrameEdit bool false } } IsTile bool 
+#ZOMPROPERTIES_04 true PolyIDs ints { 0 3 4 2 1 5 } } } BBoxUV box3d 0 0 0 0 0 0 BBox3D box3d 0 0 0 0 0 0 Area3D doubl
+#ZOMPROPERTIES_04 e 0 AreaUV double 0 IsRoot bool true TopoStable table {Selected bool false Box box3d 0 1 0 1 0 1 U i
+#ZOMPROPERTIES_04 nt 0 V int 0 NU int 1 NV int 1 Tiling vector3d 1 1 1 TileRatioMode string "1:1" Pack table {Rotate t
+#ZOMPROPERTIES_04 able {Mode int 2 Min double 0 Max double 90 Step double 0 } PaddingSize double 0.0078125 MarginSize 
+#ZOMPROPERTIES_04 double 0.00390625 Resolution int 256 MapResolution int 2048 Scaling table {TexelDensity double 1024 
+#ZOMPROPERTIES_04 Mode int 0 } LayoutScalingMode int 2 MaxMutations int 1 } } IsTile bool false PolyIDs ints { } } Map
+#ZOMPROPERTIES_04 s table {Density table {PrimType string "Polygon" Size int 1 DefaultValue double 1 ScaleType string 
+#ZOMPROPERTIES_04 "Log" MergeMode string "Average" MinValue double 0.1 MaxValue double 4 Data doubles { r 6 1 } } Pin 
+#ZOMPROPERTIES_04 table {PrimType string "Vertex" Size int 1 DefaultValue double 0 ScaleType string "Normalized" Merge
+#ZOMPROPERTIES_04 Mode string "Max" MinValue double 0 MaxValue double 1 Data doubles { r 14 0 } } Protect table {PrimT
+#ZOMPROPERTIES_04 ype string "Vertex" Size int 1 DefaultValue double 0 ScaleType string "Normalized" MergeMode string 
+#ZOMPROPERTIES_04 "Average" MinValue double -1 MaxValue double 1 Data doubles { r 14 0 } } } } }
+#ZOMPROPERTIES_04}
+
+
+#ZOMSCENE_01{
+#ZOMSCENE_01 CScene {Settings table {AxisSystem table {UpVector string "y" } Unit string "cm" } }
+#ZOMSCENE_01}
+
+#begin 0 fatal error vertex (that RizomUV cannot handle)
+#end 0 fatal error vertex (that RizomUV cannot handle)
+
+#begin 0 error vertex
+#end 0 error vertex
